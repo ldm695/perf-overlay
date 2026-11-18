@@ -1,0 +1,62 @@
+<Window x:Class="PerfOverlay.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PerfOverlay Overlay"
+        SizeToContent="WidthAndHeight" WindowStyle="None" ResizeMode="NoResize"
+        AllowsTransparency="True" Background="Transparent"
+        ShowInTaskbar="False" ShowActivated="False" Topmost="True"
+        WindowStartupLocation="Manual" IsHitTestVisible="False">
+    <Grid x:Name="MetricsPanel" Margin="8,4" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="pack://application:,,,/PerfOverlay;component/Assets/Fonts/fusion-pixel-8px-monospaced-latin.ttf#Fusion Pixel 8px Mono latin, pack://application:,,,/PerfOverlay;component/Assets/Fonts/fusion-pixel-8px-monospaced-zh_hans.ttf#Fusion Pixel 8px Mono zh-Hans" />
+            </Style>
+        </Grid.Resources>
+        <StackPanel x:Name="HorizontalLayout" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel x:Name="FpsGroup" Orientation="Horizontal" Margin="8,0" VerticalAlignment="Center">
+                <TextBlock Text="FPS" FontSize="16" Foreground="#101719" VerticalAlignment="Center" Margin="0,0,8,0" />
+                <TextBlock x:Name="FpsText" Text="N/A" Margin="0,0,10,0" FontSize="16" FontWeight="Bold" Foreground="#080D0F" VerticalAlignment="Center" ToolTip="Displayed FPS." />
+                <TextBlock x:Name="BaseFpsText" Text="N/A" Margin="0,0,10,0" FontSize="16" FontWeight="Bold" Foreground="#080D0F" VerticalAlignment="Center" ToolTip="Base game FPS calculated from PresentMon app timing." Visibility="Collapsed" />
+                <TextBlock x:Name="LowText" Text="N/A" FontSize="16" FontWeight="Bold" Foreground="#080D0F" VerticalAlignment="Center" ToolTip="1% LOW displayed-frame FPS." />
+            </StackPanel>
+            <TextBlock x:Name="HorizontalFpsSeparator" Text="|" FontSize="16" Margin="4,0" Foreground="#55343D40" VerticalAlignment="Center" />
+            <StackPanel x:Name="GpuMetricsPanel" Orientation="Horizontal" Margin="8,0" VerticalAlignment="Center" />
+            <TextBlock x:Name="HorizontalGpuSeparator" Text="|" FontSize="16" Margin="4,0" Foreground="#55343D40" VerticalAlignment="Center" />
+            <StackPanel x:Name="HorizontalCpuGroup" Orientation="Horizontal" Margin="8,0" VerticalAlignment="Center">
+                <TextBlock Text="CPU" FontSize="16" Foreground="#101719" VerticalAlignment="Center" Margin="0,0,8,0" />
+                <TextBlock x:Name="CpuText" Text="N/A" FontSize="16" FontWeight="Bold" Foreground="#080D0F" VerticalAlignment="Center" />
+            </StackPanel>
+            <TextBlock x:Name="HorizontalCpuSeparator" Text="|" FontSize="16" Margin="4,0" Foreground="#55343D40" VerticalAlignment="Center" />
+            <StackPanel x:Name="HorizontalMemoryGroup" Orientation="Horizontal" Margin="8,0" VerticalAlignment="Center">
+                <TextBlock Text="RAM" FontSize="16" Foreground="#101719" VerticalAlignment="Center" Margin="0,0,8,0" ToolTip="System physical memory usage." />
+                <TextBlock x:Name="MemoryText" Text="N/A" FontSize="16" FontWeight="Bold" Foreground="#080D0F" VerticalAlignment="Center" ToolTip="System physical memory in use." />
+            </StackPanel>
+            <TextBlock x:Name="HorizontalMemorySeparator" Text="|" FontSize="16" Margin="4,0" Foreground="#55343D40" VerticalAlignment="Center" />
+            <StackPanel x:Name="HorizontalLatencyGroup" Orientation="Horizontal" Margin="8,0" VerticalAlignment="Center">
+                <TextBlock Text="LAT" FontSize="16" Foreground="#101719" VerticalAlignment="Center" Margin="0,0,8,0" ToolTip="Average PC latency in milliseconds; requires PC-latency instrumentation from the game." />
+                <TextBlock x:Name="LatencyText" Text="N/A" FontSize="16" FontWeight="Bold" Foreground="#080D0F" VerticalAlignment="Center" ToolTip="PresentMon MsPCLatency. Unsupported games remain N/A." />
+            </StackPanel>
+        </StackPanel>
+        <StackPanel x:Name="VerticalLayout" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="180">
+            <StackPanel x:Name="VerticalFpsRow" Orientation="Horizontal" Margin="8,5" VerticalAlignment="Center">
+                <TextBlock x:Name="VerticalFpsLabel" Text="FPS" FontSize="16" Foreground="#101719" VerticalAlignment="Center" Margin="0,0,8,0" />
+                <TextBlock x:Name="VerticalFpsText" Text="N/A" FontSize="16" FontWeight="Bold" Foreground="#080D0F" VerticalAlignment="Center" />
+                <TextBlock x:Name="VerticalBaseFpsInlineText" Text="N/A" Margin="8,0,0,0" FontSize="16" FontWeight="Bold" Foreground="#080D0F" VerticalAlignment="Center" Visibility="Collapsed" />
+                <TextBlock x:Name="VerticalLowInlineText" Text="N/A" Margin="8,0,0,0" FontSize="16" FontWeight="Bold" Foreground="#080D0F" VerticalAlignment="Center" />
+            </StackPanel>
+            <StackPanel x:Name="VerticalGpuMetricsPanel" Orientation="Vertical" Margin="8,5" />
+            <StackPanel x:Name="VerticalCpuRow" Orientation="Horizontal" Margin="8,5" VerticalAlignment="Center">
+                <TextBlock x:Name="VerticalCpuLabel" Text="CPU" FontSize="16" Foreground="#101719" VerticalAlignment="Center" Margin="0,0,8,0" />
+                <TextBlock x:Name="VerticalCpuText" Text="N/A" FontSize="16" FontWeight="Bold" Foreground="#080D0F" />
+            </StackPanel>
+            <StackPanel x:Name="VerticalMemoryRow" Orientation="Horizontal" Margin="8,5" VerticalAlignment="Center">
+                <TextBlock x:Name="VerticalMemoryLabel" Text="MEMORY" FontSize="16" Foreground="#101719" VerticalAlignment="Center" Margin="0,0,8,0" ToolTip="System physical memory usage." />
+                <TextBlock x:Name="VerticalMemoryText" Text="N/A" FontSize="16" FontWeight="Bold" Foreground="#080D0F" />
+            </StackPanel>
+            <StackPanel x:Name="VerticalLatencyRow" Orientation="Horizontal" Margin="8,5" VerticalAlignment="Center">
+                <TextBlock x:Name="VerticalLatencyLabel" Text="LATENCY" FontSize="16" Foreground="#101719" VerticalAlignment="Center" Margin="0,0,8,0" ToolTip="Average PC latency in milliseconds; requires PC-latency instrumentation from the game." />
+                <TextBlock x:Name="VerticalLatencyText" Text="N/A" FontSize="16" FontWeight="Bold" Foreground="#080D0F" ToolTip="PresentMon MsPCLatency. Unsupported games remain N/A." />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

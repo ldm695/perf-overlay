@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <SatelliteResourceLanguages>en;zh-Hans</SatelliteResourceLanguages>
+    <AssemblyName>PerfOverlay</AssemblyName>
+    <ApplicationIcon>..\..\artifacts\PerfOverlay-icon.ico</ApplicationIcon>
+    <RootNamespace>PerfOverlay</RootNamespace>
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Fonts\fusion-pixel-8px-monospaced-latin.ttf" />
+    <Resource Include="Assets\Fonts\fusion-pixel-8px-monospaced-zh_hans.ttf" />
+    <Resource Include="Assets\Fonts\OFL.txt" />
+    <Content Include="..\..\tools\PresentMon\PresentMon.exe" Condition="Exists('..\..\tools\PresentMon\PresentMon.exe')">
+      <Link>tools\PresentMon.exe</Link>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="..\..\tools\PresentMon\LICENSE.txt" Condition="Exists('..\..\tools\PresentMon\LICENSE.txt')">
+      <Link>licenses\PresentMon-LICENSE.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="..\..\tools\PresentMon\THIRD_PARTY.txt" Condition="Exists('..\..\tools\PresentMon\THIRD_PARTY.txt')">
+      <Link>licenses\PresentMon-THIRD_PARTY.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Assets\Fonts\OFL.txt">
+      <Link>licenses\Fusion-Pixel-OFL.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="..\..\README.md">
+      <Link>README.md</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="10.0.14" />
+  </ItemGroup>
+
+</Project>

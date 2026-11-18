@@ -1,0 +1,15 @@
+**/bin/
+**/obj/
+**/publish/
+.vs/
+*.user
+*.suo
+
+# 临时目录
+tmp/
+
+# 本机诊断记录可能含截图、进程信息和性能采样
+/artifacts/diagnostics/
+
+# 生成的发布压缩包；发布目录由上面的规则忽略
+/artifacts/PerfOverlay-win-x64.zip

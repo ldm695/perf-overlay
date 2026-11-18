@@ -1,0 +1,17 @@
+<Window x:Class="PerfOverlay.ConfirmationWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Width="390" Height="200" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="Transparent" ShowInTaskbar="False" FontFamily="pack://application:,,,/PerfOverlay;component/Assets/Fonts/fusion-pixel-8px-monospaced-latin.ttf#Fusion Pixel 8px Mono latin">
+ <Border Background="#E8E4D8" BorderBrush="#172124" BorderThickness="3">
+  <Grid>
+   <Grid.RowDefinitions><RowDefinition Height="42"/><RowDefinition Height="*"/><RowDefinition Height="60"/></Grid.RowDefinitions>
+   <Grid Background="#C9C5B9" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="44"/></Grid.ColumnDefinitions>
+    <TextBlock x:Name="TitleText" VerticalAlignment="Center" Margin="14,0,0,0" FontSize="14"/>
+    <Button Grid.Column="1" Content="X" Click="No_Click" BorderThickness="0" Background="Transparent" FontSize="16"/>
+   </Grid>
+   <TextBlock x:Name="MessageText" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Margin="18,8" FontSize="16"/>
+   <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Button Content="YES" Width="120" Height="38" Margin="0,0,12,0" Click="Yes_Click" FontSize="15" Background="#D5D0C3" Foreground="#172124" BorderBrush="#172124" BorderThickness="2"/>
+    <Button Content="NO" Width="120" Height="38" Click="No_Click" FontSize="15" Background="#D5D0C3" Foreground="#172124" BorderBrush="#172124" BorderThickness="2"/>
+   </StackPanel>
+  </Grid>
+ </Border>
+</Window>
